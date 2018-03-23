@@ -2,27 +2,27 @@ html {
   font-family: 'Roboto Slab', serif;
   font-size: 100%;
   background: #333;
-  height: 90%;
 }
 
 h1, h2 {
   color: white;
   font-weight: normal;
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
 }
 h1 {
   font-size: 300%;
+  line-height: 10px;
 }
 h2 {
   font-size: 150%;
+  line-height: 20px;
 }
 
-/* unvisited and unvisited links */
-a:link, a:visited, a:active {
+a:link, a:visited {
   color: lightskyblue;
   text-decoration: none;
 }
 
-/* mouse over link */
 a:hover {
   color: white;
 }
@@ -31,7 +31,23 @@ body {
   text-align: center;
 }
 
-#linkDiv {
-  padding: 10% 0;
+.box {
+  display: inline-block;
+  margin: 10px;
+  width: 200px;
+  line-height:40px;
+  border-style: solid;
+  border-width: thin;
+  border-color: lightskyblue;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
 
+.box:hover {
+  -webkit-transform: translate(-3px, -3px);
+  transform: translate(-3px, -3px);
+  border-color: white;
+  box-shadow: 6px 6px 12px 3px rgba(0, 0, 0, 0.3);
 }
