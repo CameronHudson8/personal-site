@@ -1,0 +1,37 @@
+html {
+  font-family: 'Roboto Slab', serif;
+  font-size: 100%;
+  background: #333;
+  height: 90%;
+}
+
+h1, h2 {
+  color: white;
+  font-weight: normal;
+}
+h1 {
+  font-size: 300%;
+}
+h2 {
+  font-size: 150%;
+}
+
+/* unvisited and unvisited links */
+a:link, a:visited, a:active {
+  color: lightskyblue;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: white;
+}
+
+body {
+  text-align: center;
+}
+
+#linkDiv {
+  padding: 10% 0;
+
+}
