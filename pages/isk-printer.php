@@ -1,10 +1,30 @@
-<?php
-$title = "ISK Printer";
-$path = $_SERVER['DOCUMENT_ROOT'];
-require $path . "sections/genericHeader.php";
-require $path . "sections/iskPrinterHeader.php";
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
 <?php
-require $path . "sections/footer.php";
+$title = "ISK Printer";
+require "../php/genericHead.php";
+?>
+</head>
+
+<?php
+require "../php/iskPrinterHeader.php";
+?>
+</head>
+
+<a href="../pages/isk-printer.php">
+	<div class="box">
+		<h1>Ƶ</h1>
+	</div>
+</a>
+
+<p>References:
+<ol>
+<li><a href="https://www.ssc.wisc.edu/~bhansen/papers/ncde.pdf">Bruce E. Hansen: Nonparametric Conditional Density Estimation</a></li>
+</ol>
+</p>
+
+<?php
+require "../php/footer.php";
 ?>

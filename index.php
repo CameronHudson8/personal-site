@@ -1,8 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
 <?php
 $title = "Cameron Hudson";
-require "sections/genericHeader.php";
-require "sections/cameronHeader.php";
+require "php/genericHead.php";
 ?>
+</head>
+
+<?php
+require "php/cameronHeader.php";
+?>
+
 
 <a href="https://github.com/Kronn8">
 	<div class="box">
@@ -17,13 +26,7 @@ require "sections/cameronHeader.php";
 		LinkedIn Profile
 	</div>
 </a>
-<br>
-<a href="/pages/isk-printer.php">
-	<div class="box">
-		ISK Printer
-	</div>
-</a>
 
 <?php
-require "sections/footer.php";
+require "php/footer.php";
 ?>
