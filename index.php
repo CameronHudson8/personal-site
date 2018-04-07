@@ -13,6 +13,9 @@ require "php/cameronHeader.php";
 ?>
 
 
+
+<body>
+
 <a href="https://github.com/Kronn8">
 	<div class="box">
 		<img src="images/github-logo.png" alt="Github Logo" style="width:15px;height:15px;" hspace="2px">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
 <?php
 $title = "ISK Printer";
 require "../php/genericHead.php";
@@ -11,7 +11,8 @@ require "../php/genericHead.php";
 <?php
 require "../php/iskPrinterHeader.php";
 ?>
-</head>
+
+<body>
 
 <a href="../pages/isk-printer.php">
 	<div class="box">
