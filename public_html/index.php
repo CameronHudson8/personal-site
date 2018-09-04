@@ -29,6 +29,13 @@ require "php/cameronHeader.php";
 		LinkedIn Profile
 	</div>
 </a>
+<br>
+<a href="assets/pdf/2018-09-04 - Resume.pdf">
+	<div class="box">
+		<img src="images/document_icon.png" alt="document icon" style="width:15px;height:15px;" hspace="2px">
+		Resume
+	</div>
+</a>
 
 <?php
 require "php/footer.php";
