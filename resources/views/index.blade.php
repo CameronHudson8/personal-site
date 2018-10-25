@@ -29,7 +29,7 @@
                 <img src="{{ asset('images/linkedin-logo.svg') }}" alt="LinkedIn Logo" style="width:15px;height:15px;" hspace="2px">
                 LinkedIn Profile
               </a>
-              <a class="btn btn-primary m-3 fixed-size" href="http://nbviewer.jupyter.org/github/CameronHudson8/Resume/blob/master/Resume.pdf">
+              <a class="btn btn-primary m-3 fixed-size" href="https://github.com/CameronHudson8/Resume/raw/master/Resume.pdf">
                 <img src="{{ asset('images/document_icon.png') }}" alt="document icon" style="width:15px;height:15px;" hspace="2px">
                 Resume
               </a>
