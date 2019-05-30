@@ -1,9 +1,0 @@
-.env*
-*.env
-.git
-.DS_Store
-deploy.sh
-exclude-from-deploy
-.editorconfig
-.gitignore
-.gitattributes
