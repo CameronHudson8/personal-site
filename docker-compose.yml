@@ -4,56 +4,25 @@ services:
   # The Laravel app
   app:
     build: .
-  #  restart: unless-stopped
+    restart: unless-stopped
     tty: true
-    #environment:
-    #  SERVICE_NAME: app
-    #  SERVICE_TAGS: dev
-    #working_dir: /var/www
-    # networks:
-    #   - app-network
     ports:
       - "18000:8000" # TODO Create a separate docker-compose.dev.yml file, and move this to it.
-    # volumes:
-    #   - public:/app/public
+    volumes:
+      - app:/app
 
-  # # The nginx web server
-  # webserver:
-  #   image: richarvey/nginx-php-fpm
-  #   restart: unless-stopped
-  #   tty: true
-    # ports:
-    #   - "180:80"
-  #     - "1443:443"
-  #   networks:
-  #     - app-network
-  #   volumes:
-  #     - public:/var/www/html
+  # The nginx web server
+  webserver:
+    image: richarvey/nginx-php-fpm
+    environment:
+      - WEBROOT=/var/www/html/public
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "180:80"
+      - "1443:443"
+    volumes:
+      - app:/var/www/html
 
-  ## MySQL server
-  #db:
-  #  image: mysql:5.7.22
-  #  container_name: db
-  #  restart: unless-stopped
-  #  tty: true
-
-  #  environment:
-  #    MYSQL_DATABASE: laravel
-  #    MYSQL_ROOT_PASSWORD: your_mysql_root_password
-  #    SERVICE_TAGS: dev
-  #    SERVICE_NAME: mysql
-  #  #networks:
-  #   - app-network
-  #  expose:
-  #    - "3306:3306"
-  #  external_links:
-  #    - "app"
-  #    - "webserver"
-
-# volumes:
-#   public:
-
-# Docker network
-# networks:
-#   app-network:
-#     driver: bridge
+volumes:
+  app:
