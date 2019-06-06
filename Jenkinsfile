@@ -6,19 +6,19 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
-                docker-compose -f docker-compose.prod.yml build
+                sh 'echo "Building..."'
+                sh 'docker-compose -f docker-compose.prod.yml build'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh 'echo "Testing..."'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying..'
-                docker-compose -f docker-compose.prod.yml up
+                sh 'echo "Deploying..."'
+                sh 'docker-compose -f docker-compose.prod.yml up'
             }
         }
     }
