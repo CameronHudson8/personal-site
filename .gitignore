@@ -16,3 +16,4 @@ yarn-error.log
 
 # Custom:
 .DS_Store
+Storage/framework/sessions

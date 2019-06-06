@@ -1,0 +1,41 @@
+version: "3"
+services:
+
+  # # The Laravel app
+  # app:
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   # restart: unless-stopped
+  #   tty: true
+  #   ports:
+  #     - "18000:8000" # This is for debugging only. When complete, we want to access the application through nginx.
+  #   # user: $CURRENT_UID
+  #   volumes:
+  #     - app:/app
+  #   entrypoint:
+  #     - php
+  #     - artisan
+  #     - serve
+  #     - --host=0.0.0.0
+
+  #The nginx web server
+  webserver:
+    image: richarvey/nginx-php-fpm
+    environment:
+      - WEBROOT=/var/www/html/public
+    # restart: unless-stopped
+    tty: true
+    # user: $CURRENT_UID
+    ports:
+      - "180:80"
+      - "1443:443"
+    volumes:
+      - app:/var/www/html
+
+volumes:
+  app:
+    driver_opts:
+      type: volume
+      device: ${PWD}
+      o: bind
