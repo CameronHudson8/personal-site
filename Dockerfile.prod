@@ -1,0 +1,11 @@
+# Install dependencies using composer
+FROM composer AS composer
+WORKDIR /app
+# Note that composer.json and composer.lock are excluded from COPY by the .dockerignore.
+COPY . .                    
+RUN composer install
+
+# Start the nginx server using the 
+FROM richarvey/nginx-php-fpm  
+WORKDIR /var/www/html
+COPY --from=composer /app .
