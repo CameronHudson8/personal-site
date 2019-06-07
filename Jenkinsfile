@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "Building..."'
-                sh 'docker -f Docker.prod build'
+                sh 'docker build -f Dockerfile.prod .'
             }
         }
         stage('Test') {
