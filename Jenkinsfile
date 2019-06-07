@@ -23,7 +23,7 @@ pipeline {
             steps {
                 wrap(withColor) {
                     sh 'echo "Deploying..."'
-                    sh 'docker-compose -f docker-compose.prod.yml up'
+                    sh 'docker-compose -f docker-compose.prod.yml -d up'
                 }
             }
         }
