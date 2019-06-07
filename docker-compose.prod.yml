@@ -26,7 +26,6 @@ services:
       dockerfile: Dockerfile.prod
     environment:
       - WEBROOT=/var/www/html/public
-      - env_file=/usr/local/etc/environments/Personal-Site/.env
     # restart: unless-stopped
     tty: true
     # user: $CURRENT_UID

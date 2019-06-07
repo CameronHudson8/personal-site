@@ -7,6 +7,7 @@ pipeline {
             steps {
                 wrap(withColor) {
                     sh 'echo "Building..."'
+                    sh 'cp ~/Repositories/Personal/Personal-Site/.env .'
                     sh 'docker-compose -f docker-compose.prod.yml build'
                 }   
             }

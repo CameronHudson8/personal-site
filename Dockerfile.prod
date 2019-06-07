@@ -3,7 +3,6 @@ FROM composer AS composer
 WORKDIR /app
 # Note that composer.json and composer.lock are excluded from COPY by the .dockerignore.
 COPY . .
-COPY ~/Repositories/Personal/Personal-Site/.env .
 RUN composer install \
   && php artisan key:generate
 
