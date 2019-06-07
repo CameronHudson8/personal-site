@@ -3,7 +3,7 @@ services:
 
   # # The Laravel app
   # app:
-  #   build: 
+  #   build:
   #     context: .
   #     dockerfile: Dockerfile.dev
   #   # restart: unless-stopped
@@ -21,11 +21,12 @@ services:
 
   #The nginx web server
   webserver:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.prod
     environment:
       - WEBROOT=/var/www/html/public
+      - env_file=~/Repositories/Personal/Personal-Site/.env
     # restart: unless-stopped
     tty: true
     # user: $CURRENT_UID
