@@ -23,7 +23,7 @@ pipeline {
             steps {
                 wrap(withColor) {
                     sh 'echo "Deploying..."'
-                    sh 'docker-compose -f docker-compose.prod.yml up -d'
+                    sh 'docker-compose -f docker-compose.prod.yml up -d --remove-orphans'
                 }
             }
         }
