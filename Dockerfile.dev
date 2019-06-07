@@ -2,7 +2,8 @@
 #FROM composer AS composer
 #WORKDIR /app
 #COPY . .                    # Note that composer.json and composer.lock are excluded from COPY by the .dockerignore.
-#RUN composer install
+#RUN composer install \
+#  && php artisan key:generate
 #
 #
 #FROM richarvey/nginx-php-fpm  

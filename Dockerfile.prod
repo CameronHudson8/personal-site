@@ -3,8 +3,8 @@ FROM composer AS composer
 WORKDIR /app
 # Note that composer.json and composer.lock are excluded from COPY by the .dockerignore.
 COPY . .                    
-RUN composer install
-RUN php artisan:key generate
+RUN composer install \
+  && php artisan key:generate
 
 # Start the nginx server
 FROM richarvey/nginx-php-fpm  
