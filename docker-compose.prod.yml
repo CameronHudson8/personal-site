@@ -21,7 +21,9 @@ services:
 
   #The nginx web server
   webserver:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile.prod
     environment:
       - WEBROOT=/var/www/html/public
     # restart: unless-stopped
