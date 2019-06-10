@@ -1,24 +1,30 @@
-pipeline {
-    agent {
-        label 'docker'
-    }
+def withColor = [$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']
 
+pipeline {
+    agent any
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
-                docker-compose -f docker-compose.prod.yml build
+                wrap(withColor) {
+                    sh 'echo "Building..."'
+                    sh 'cp /home/cameronhudson/Repositories/Personal/Personal-Site/.env .'
+                    sh 'docker-compose -f docker-compose.prod.yml build'
+                }   
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                wrap(withColor) {
+                    sh 'echo "Testing..."'
+                }
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying..'
-                docker-compose -f docker-compose.prod.yml up
+                wrap(withColor) {
+                    sh 'echo "Deploying..."'
+                    sh 'docker-compose -f docker-compose.prod.yml up -d --remove-orphans'
+                }
             }
         }
     }
