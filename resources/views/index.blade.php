@@ -7,11 +7,14 @@
         <title>Cameron Hudson</title>
 
         <!-- Links -->
-        <link rel="shortcut icon" href="favicon.ico"/>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+        <link rel="stylesheet" href="{{ secure_asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ secure_asset('css/custom.css') }}">
 
     </head>
     <body class="pt-5">
@@ -22,15 +25,15 @@
           <h2>Software Engineering Student</h2>
 
               <a class="btn btn-primary m-3 fixed-size" min-width="200px" href="https://github.com/CameronHudson8">
-                <img src="{{ asset('images/github-logo.png') }}" alt="Github Logo" style="width:15px;height:15px;" hspace="2px">
+                <img src="{{ secure_asset('images/github-logo.png') }}" alt="Github Logo" style="width:15px;height:15px;" hspace="2px">
                 Github Profile
               </a>
               <a class="btn btn-primary m-3 fixed-size" href="https://www.linkedin.com/in/cameronhudson8/">
-                <img src="{{ asset('images/linkedin-logo.svg') }}" alt="LinkedIn Logo" style="width:15px;height:15px;" hspace="2px">
+                <img src="{{ secure_asset('images/linkedin-logo.svg') }}" alt="LinkedIn Logo" style="width:15px;height:15px;" hspace="2px">
                 LinkedIn Profile
               </a>
               <a class="btn btn-primary m-3 fixed-size" href="https://github.com/CameronHudson8/Resume/raw/master/Resume.pdf">
-                <img src="{{ asset('images/document_icon.png') }}" alt="document icon" style="width:15px;height:15px;" hspace="2px">
+                <img src="{{ secure_asset('images/document_icon.png') }}" alt="document icon" style="width:15px;height:15px;" hspace="2px">
                 Resume
               </a>
 
