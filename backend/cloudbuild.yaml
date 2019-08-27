@@ -1,0 +1,22 @@
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone', 'https://github.com/cameronhudson8/Personal-Site']
+  
+  # Google Cloud Build calls this file as if it existed at the repository root,
+  # so we must refer to the Dockerfile specified in './backend'.
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/personal-site-249505/github.com/cameronhudson8/personal-site/backend:$REVISION_ID', './backend']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/personal-site-249505/github.com/cameronhudson8/personal-site/backend:$REVISION_ID']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - -n
+  - $_NAMESPACE
+  - set
+  - image
+  - deployment
+  - backend
+  - backend=gcr.io/personal-site-249505/github.com/cameronhudson8/personal-site/backend:$REVISION_ID
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-west1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'

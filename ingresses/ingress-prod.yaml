@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: reverse-proxy
+  namespace: personal-site-prod
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+  - host: cameronhudson8.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: backend
+          servicePort: 80
+      # - path: /api
+      #   backend:
+      #     serviceName: backend
+      #     servicePort: 3000
+      # - path: /
+      #   backend:
+      #     serviceName: frontend
+      #     servicePort: 80
+  - host: cameronhudson.info
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: backend
+          servicePort: 80
+      # - path: /api
+      #   backend:
+      #     serviceName: backend
+      #     servicePort: 3000
+      # - path: /
+      #   backend:
+      #     serviceName: frontend
+      #     servicePort: 80
+
+  tls:
+    - hosts:
+      - cameronhudson8.com
+      secretName: tls-cameronhudson8.com
+    - hosts:
+      - cameronhudson.info
+      secretName: tls-cameronhudson.info

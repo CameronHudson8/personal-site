@@ -1,19 +1,4 @@
-# Laravel defaults:
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-/.idea
-/.vscode
-/.vagrant
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-.env
-.phpunit.result.cache
-
 # Custom:
-.DS_Store
-Storage/framework/sessions
+**/.DS_Store
+certificates/tls-cameronhudson\.info-secret\.yaml
+certificates/tls-cameronhudson8\.com-secret\.yaml
