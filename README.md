@@ -9,7 +9,7 @@ docker build . -t gcr.io/personal-site-249505/github.com/cameronhudson8/personal
 
 ## How to deploy the first time
 
-To install the cluster-wide ingress, follow the directions at https://cloud.google.com/community/tutorials/nginx-ingress-gke. If helm and tiller are already installed on your PC and cluster, then run
+To install the cluster-wide ingress controller and cluster-wide default ingress backend, follow the directions at https://cloud.google.com/community/tutorials/nginx-ingress-gke. If helm and tiller are already installed on your PC and cluster, simply run
 
 ```
 helm install \
@@ -25,10 +25,10 @@ kubectl create namespace personal-site-dev \
   && kubectl create namespace personal-site-testing \
   && kubectl create namespace personal-site-staging \
   && kubectl create namespace personal-site-prod
-kubectl apply -f dev-ingress.yaml \
-  && kubectl apply -f testing-ingress.yaml \
-  && kubectl apply -f staging-ingress.yaml \
-  && kubectl apply -f prod-ingress.yaml
+kubectl apply -f ingresses/ingress-dev.yaml \
+  && kubectl apply -f ingresses/ingress-testing.yaml \
+  && kubectl apply -f ingresses/ingress-staging.yaml \
+  && kubectl apply -f ingresses/ingress-prod.yaml
 ```
 
 Set up the backend services.
@@ -62,6 +62,28 @@ kubectl -n personal-site-dev apply -f frontend/frontend-deployment.yaml \
   && kubectl -n personal-site-staging apply -f frontend/frontend-deployment.yaml \
   && kubectl -n personal-site-prod apply -f frontend/frontend-deployment.yaml
 ``` -->
+
+Finally, create the secrets for TLS certificates. First, copy the existing secret files.
+```
+cp certificates/tls-cameronhudson.info-secret-example.yaml certificates/tls-cameronhudson.info-secret.yaml \
+  && cp certificates/tls-cameronhudson8.com-secret-example.yaml certificates/tls-cameronhudson8.com-secret.yaml
+```
+
+Next, encode the `.crt` and `.key` certificate files to base 64.
+```
+base64 cameronhudson.info.crt
+base64 cameronhudson.info.key
+base64 cameronhudson8.com.crt
+base64 cameronhudson8.com.key
+```
+
+Place the base 64-encoded output into the respective secret file at the line indicated with the file.
+
+Then, create the secrets in Kubernetes.
+```
+kubectl apply -f certificates/tls-cameronhudson.info-secret.yaml \
+  && kubectl apply -f certificates/tls-cameronhudson-secret.yaml
+```
 
 ## How to deploy sustainably
 
