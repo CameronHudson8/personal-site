@@ -23,7 +23,39 @@ spec:
       #   backend:
       #     serviceName: frontend
       #     servicePort: 80
+
+  - host: www.cameronhudson8.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: backend
+          servicePort: 80
+      # - path: /api
+      #   backend:
+      #     serviceName: backend
+      #     servicePort: 3000
+      # - path: /
+      #   backend:
+      #     serviceName: frontend
+      #     servicePort: 80
   - host: cameronhudson.info
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: backend
+          servicePort: 80
+      # - path: /api
+      #   backend:
+      #     serviceName: backend
+      #     servicePort: 3000
+      # - path: /
+      #   backend:
+      #     serviceName: frontend
+      #     servicePort: 80
+
+  - host: www.cameronhudson.info
     http:
       paths:
       - path: /
@@ -42,7 +74,9 @@ spec:
   tls:
     - hosts:
       - cameronhudson8.com
+      - www.cameronhudson8.com
       secretName: tls-cameronhudson8.com
     - hosts:
       - cameronhudson.info
+      - www.cameronhudson.info
       secretName: tls-cameronhudson.info
