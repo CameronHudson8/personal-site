@@ -1,4 +1,3 @@
 # Custom:
 **/.DS_Store
-certificates/tls-cameronhudson\.info-secret\.yaml
-certificates/tls-cameronhudson8\.com-secret\.yaml
+**/*secret.yaml
