@@ -27,7 +27,7 @@ https://cameronhudson8.com/
 1. Deploy the application using `helm`. If necessary, create the namespace using `kubectl` first.
     ```
     kubectl create namespace <my-namespace>
-    helm install personal-site ./personal-site  # --namespace <my-namespace>
+    helm install personal-site ./personal-site --namespace <my-namespace>
     ```
 
 ## How to remove
