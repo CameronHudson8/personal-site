@@ -40,5 +40,3 @@ Remove the application using `helm`. If the namespace is not being used by anyth
 helm del personal-site
 kubectl delete namespace personal-site
 ```
-
-**TODO**: Since Jenkins is not yet set up, I manually granted permission for the GKE cluster on which this release runs, so that it can pull images from the container registry of an old project. My goal for commits to trigger a Jenkins build that will assemble an image, push it to the registry, and then deploy it in the same Kubernetes cluster.
