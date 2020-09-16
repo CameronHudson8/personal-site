@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "personal-site.fullname" . }}-backend
+  name: {{ include "personal-site.fullname" . }}-frontend
   labels:
 {{ include "personal-site.labels" . | indent 4 }}
 spec:
-  replicas: {{ .Values.backend.replicaCount }}
+  replicas: {{ .Values.frontend.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "personal-site.name" . }}-backend
+      app.kubernetes.io/name: {{ include "personal-site.name" . }}-frontend
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "personal-site.name" . }}-backend
+        app.kubernetes.io/name: {{ include "personal-site.name" . }}-frontend
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
     {{- with .Values.imagePullSecrets }}
@@ -21,16 +21,16 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       containers:
-        - name: {{ .Chart.Name }}-backend
-          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
-          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
+        - name: {{ .Chart.Name }}-frontend
+          image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
+          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.backend.service.port }}
+              containerPort: {{ .Values.frontend.service.port }}
               protocol: TCP
-          {{- if .Values.backend.livenessProbe }}
+          {{- if .Values.frontend.livenessProbe }}
           livenessProbe:
-            initialDelaySeconds: {{ .Values.backend.livenessProbe.initialDelaySeconds }}
+            initialDelaySeconds: {{ .Values.frontend.livenessProbe.initialDelaySeconds }}
           {{- end }}
             httpGet:
               path: /

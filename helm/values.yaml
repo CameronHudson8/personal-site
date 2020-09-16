@@ -6,10 +6,8 @@ frontend:
   replicaCount: 1
   image:
     repository: docker.io/cameronhudson8/personal-site-frontend
-    tag: latest
+    tag: e2f8ca8
     pullPolicy: Always
-  livenessProbe:
-    initialDelaySeconds: 78
   service:
     type: ClusterIP
     port: 80

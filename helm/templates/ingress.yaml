@@ -28,8 +28,8 @@ spec:
         paths:
         {{- range .paths }}
           - path: {{ .path }}
-            backend:
-              serviceName: {{ $fullName }}-{{ .backend.serviceName }}
+            frontend:
+              serviceName: {{ $fullName }}-{{ .frontend.serviceName }}
               servicePort: http
         {{- end }}
   {{- end }}
