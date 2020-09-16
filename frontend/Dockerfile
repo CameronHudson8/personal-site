@@ -1,12 +1,4 @@
-# Install dependencies using composer
-FROM golang:1.14.9-alpine3.12 AS build-stage
-WORKDIR /app
-
-COPY go.mod go.sum ./
-RUN go mod download
-
+FROM nginx:1.19.2-alpine
+WORKDIR /usr/share/nginx/html
 COPY . .
-RUN go install
-
 EXPOSE 80
-CMD personal-site

@@ -2,10 +2,10 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-backend:
+frontend:
   replicaCount: 1
   image:
-    repository: docker.io/cameronhudson8/personal-site
+    repository: docker.io/cameronhudson8/personal-site-frontend
     tag: latest
     pullPolicy: Always
   livenessProbe:
@@ -27,14 +27,14 @@ ingress:
     - host: cameronhudson8.com
       paths:
       - path: /
-        backend:
-          serviceName: backend
+        frontend:
+          serviceName: frontend
           servicePort: 80
     - host: cameronhudson.info
       paths:
       - path: /
-        backend:
-          serviceName: backend
+        frontend:
+          serviceName: frontend
           servicePort: 80
   tls:
   - secretName: tls-cameronhudson8.com
