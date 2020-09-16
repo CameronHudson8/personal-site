@@ -31,10 +31,10 @@ spec:
           {{- if .Values.frontend.livenessProbe }}
           livenessProbe:
             initialDelaySeconds: {{ .Values.frontend.livenessProbe.initialDelaySeconds }}
-          {{- end }}
             httpGet:
               path: /
               port: http
+          {{- end }}
           readinessProbe:
             httpGet:
               path: /
