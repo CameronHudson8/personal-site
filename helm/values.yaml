@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 frontend:
-  replicaCount: 2
+  replicaCount: 1
   image:
     repository: docker.io/cameronhudson8/personal-site-frontend
     tag: e2f8ca8
