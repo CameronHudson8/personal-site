@@ -9,6 +9,15 @@ https://cameronhudson8.com/
 * You already have a Kubernetes cluster running.
 * The cluster has an nginx ingress controller running in it. If not, see [these instructions](https://cloud.google.com/community/tutorials/nginx-ingress-gke) to set one up.
 
+1. Build and push image:
+```
+tag=$(git rev-parse --verify --short HEAD)
+docker build ./frontend/ -t "cameronhudson8/personal-site-frontend:${tag}"
+docker push "cameronhudson8/personal-site-frontend:${tag}"
+```
+
+1. Update the image tag in `./helm/values.yaml` with the value of `$tag`.
+
 1. Create certificate resource files. Examples are provided that you should copy in the following way.
 ```
 (cd helm/templates/certificates/ && cp tls-cameronhudson.info-secret-example.yaml tls-cameronhudson.info-secret.yaml)
