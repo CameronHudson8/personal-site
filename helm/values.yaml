@@ -6,21 +6,14 @@ frontend:
   replicaCount: 2
   image:
     repository: docker.io/cameronhudson8/personal-site-frontend
-    tag: d568a36
-    pullPolicy: Always
+    tag: fd5b038
+    pullPolicy: IfNotPresent
   service:
+    name: frontend
     type: ClusterIP
     port: 80
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
 ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
   hosts:
     - host: cameronhudson8.com
       paths:
@@ -28,19 +21,11 @@ ingress:
         frontend:
           serviceName: frontend
           servicePort: 80
-    - host: cameronhudson.info
-      paths:
-      - path: /
-        frontend:
-          serviceName: frontend
-          servicePort: 80
+
   tls:
   - secretName: tls-cameronhudson8.com
     hosts:
     - cameronhudson8.com
-  - secretName: tls-cameronhudson.info
-    hosts:
-    - cameronhudson.info
 
 resources:
   limits:
@@ -49,9 +34,3 @@ resources:
   requests:
     cpu: 6m
     memory: 4Mi
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}

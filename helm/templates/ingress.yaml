@@ -1,17 +1,14 @@
-{{- if .Values.ingress.enabled -}}
-{{- $fullName := include "personal-site.fullname" . -}}
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  name: personal-site
   labels:
 {{ include "personal-site.labels" . | indent 4 }}
-  {{- with .Values.ingress.annotations }}
   annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
-{{- if .Values.ingress.tls }}
+  {{- if ne .Values.host "localhost" }}
   tls:
   {{- range .Values.ingress.tls }}
     - hosts:
@@ -20,7 +17,7 @@ spec:
       {{- end }}
       secretName: {{ .secretName }}
   {{- end }}
-{{- end }}
+  {{- end }}
   rules:
   {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
@@ -29,8 +26,7 @@ spec:
         {{- range .paths }}
           - path: {{ .path }}
             backend:
-              serviceName: {{ $fullName }}-{{ .frontend.serviceName }}
-              servicePort: http
+              serviceName: {{ .frontend.serviceName }}
+              servicePort: {{ .frontend.servicePort }}
         {{- end }}
   {{- end }}
-{{- end }}
