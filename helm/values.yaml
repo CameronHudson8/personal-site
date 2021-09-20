@@ -14,6 +14,7 @@ frontend:
     port: 80
 
 ingress:
+  namespace: ingress
   hosts:
     - host: cameronhudson8.com
       paths:

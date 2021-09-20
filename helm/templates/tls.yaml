@@ -7,6 +7,6 @@ kind: Secret
 metadata:
   creationTimestamp: null
   name: "tls-{{ .Values.host }}" 
-  namespace: ingress-nginx
+  namespace: {{ .Values.ingress.namespace | quote }}
 type: kubernetes.io/tls
 {{- end }}
