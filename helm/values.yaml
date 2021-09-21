@@ -1,37 +1,5 @@
-# Default values for personal-site.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
 frontend:
   replicaCount: 2
   image:
     repository: docker.io/cameronhudson8/personal-site-frontend
     tag: fd5b038
-    pullPolicy: IfNotPresent
-  service:
-    name: frontend
-    type: ClusterIP
-    port: 80
-
-ingress:
-  namespace: ingress
-  hosts:
-    - host: cameronhudson8.com
-      paths:
-      - path: /
-        frontend:
-          serviceName: frontend
-          servicePort: 80
-
-  tls:
-  - secretName: tls-cameronhudson8.com
-    hosts:
-    - cameronhudson8.com
-
-resources:
-  limits:
-    cpu: 1
-    memory: 6Mi
-  requests:
-    cpu: 6m
-    memory: 6Mi

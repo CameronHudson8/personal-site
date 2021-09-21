@@ -24,8 +24,6 @@ https://cameronhudson8.com/
     helm install personal-site ./helm \
         --kube-context <context> \
         --namespace <my-namespace> \
-        --set host=<host> \
-        [--set-file crtChainFile=<path-to-crt-chain-file>] \
-        [--set-file keyFile=<path-to-key-file>]
+        --set-file crtChainFile=<path-to-crt-chain-file> \
+        --set-file keyFile=<path-to-key-file>
     ```
-    If `host` is not `'localhost'`, then `crtChainFile` and `keyFile` must be provided.

@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  labels:
-{{ include "personal-site.labels" . | indent 4 }}
 spec:
   replicas: {{ .Values.frontend.replicaCount }}
   selector:
@@ -19,14 +17,20 @@ spec:
       containers:
         - name: frontend
           image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
-          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          imagePullPolicy: IfNotPresent
           ports:
             - name: http
-              containerPort: {{ .Values.frontend.service.port }}
+              containerPort: 80
               protocol: TCP
           readinessProbe:
             httpGet:
               path: /
               port: http
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            limits:
+              cpu: 1
+              memory: 6Mi
+            requests:
+              cpu: 6m
+              memory: 6Mi
+
