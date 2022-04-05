@@ -1,9 +1,0 @@
-apiVersion: v1
-data:
-  tls.crt: {{ .Values.crtChainFile | b64enc | squote }}
-  tls.key: {{ .Values.keyFile | b64enc | squote }}
-kind: Secret
-metadata:
-  creationTimestamp: null
-  name: tls-cameronhudson8.com
-type: kubernetes.io/tls

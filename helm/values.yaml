@@ -1,5 +1,0 @@
-frontend:
-  replicaCount: 2
-  image:
-    repository: docker.io/cameronhudson8/personal-site-frontend
-    tag: fd5b038
