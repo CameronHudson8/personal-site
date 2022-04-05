@@ -26,7 +26,12 @@ terraform {
 }
 
 inputs = {
+  cert_issuer           = "self-signed"
   create_infrastructure = false
+  frontend_hostnames = [
+    "local.cameronhudson.info",
+    "local.cameronhudson8.com"
+  ]
 }
 
 generate "providers" {

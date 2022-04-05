@@ -9,3 +9,7 @@ variable "ingress_service_namespace" {
 variable "ingress_service_name" {
   type = string
 }
+
+variable "location" {
+  type = string
+}

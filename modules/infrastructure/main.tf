@@ -58,3 +58,14 @@ resource "google_dns_record_set" "www_cameronhudson8_com" {
   rrdatas      = [data.kubernetes_service.nginx.status[0].load_balancer[0].ingress[0].ip]
   ttl          = 300
 }
+
+# Container image registries
+
+resource "google_artifact_registry_repository" "frontend" {
+  provider = google-beta
+  project       = var.gcp_project
+  location      = var.location
+  repository_id = "personal-site"
+  description   = "Contains images for Cameron Hudson's personal site"
+  format        = "DOCKER"
+}

@@ -26,7 +26,12 @@ terraform {
 }
 
 inputs = {
+  cert_issuer           = "lets-encrypt-prod"
   create_infrastructure = true
+  frontend_hostnames = [
+    "cameronhudson.info",
+    "cameronhudson8.com"
+  ]
 }
 
 generate "providers" {
